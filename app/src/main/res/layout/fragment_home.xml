@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/id_scrollview_Home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.HomeFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/id_slide_show"
+            android:layout_width="match_parent"
+            android:paddingStart="80dp"
+            android:paddingEnd="80dp"
+            android:layout_height="140dp"
+            android:layout_centerHorizontal="true"/>
+        <me.relex.circleindicator.CircleIndicator3
+            android:id="@+id/id_circleindicator"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_below="@+id/id_slide_show"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            app:ci_drawable="@drawable/shape_circle_indicator"/>
+
+        <EditText
+            android:id="@+id/ed_search"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/search_shape"
+            android:layout_toLeftOf="@+id/btnFilter"
+            android:hint="Search food.."
+            android:drawableLeft="@drawable/baseline_search_24"
+            android:paddingLeft="15dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:clickable="true"
+            android:layout_below="@+id/id_slide_show"
+            />
+
+        <ImageButton
+            android:id="@+id/btnFilter"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/button_custom_1"
+            android:contentDescription="mota"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_filter"
+            android:layout_below="@+id/id_slide_show"
+            android:layout_marginTop="45dp"
+            android:rotation="45"
+            android:layout_marginRight="15dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/gridview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ed_search"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:verticalSpacing="30dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/zzzzz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/gridview"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:text="Món mới"
+            android:textColor="@color/text_normal"
+            android:textSize="19sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/id_recycle_newfood"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/zzzzz" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/iconapp"
+            android:layout_below="@+id/id_recycle_newfood"/>
+    </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>
