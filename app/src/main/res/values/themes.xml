@@ -3,7 +3,7 @@
     <style name="Theme.FoodDelivery" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/bg_red</item>
-        <item name="colorPrimaryVariant">@color/bg_white</item>
+        <item name="colorPrimaryVariant">@color/text_2</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/bg_red</item>

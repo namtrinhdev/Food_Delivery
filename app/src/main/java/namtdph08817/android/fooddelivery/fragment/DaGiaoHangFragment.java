@@ -1,27 +1,25 @@
 package namtdph08817.android.fooddelivery.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import namtdph08817.android.fooddelivery.QLDH_Activity;
 import namtdph08817.android.fooddelivery.R;
 
-public class AccountFragment extends Fragment {
-    private CardView qldh;
-    public AccountFragment() {
+public class DaGiaoHangFragment extends Fragment {
+
+    public DaGiaoHangFragment() {
         // Required empty public constructor
     }
-    public static AccountFragment newInstance() {
-        AccountFragment fragment = new AccountFragment();
+
+    public static DaGiaoHangFragment newInstance() {
+        DaGiaoHangFragment fragment = new DaGiaoHangFragment();
         return fragment;
     }
 
@@ -34,19 +32,11 @@ public class AccountFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_account, container, false);
+        return inflater.inflate(R.layout.fragment_da_giao_hang, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        qldh = view.findViewById(R.id.id_qldh);
-
-        qldh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), QLDH_Activity.class));
-            }
-        });
     }
 }

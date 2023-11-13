@@ -15,6 +15,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="20dp"
         android:src="@drawable/ic_backarrow"
+        android:rotation="45"
         android:padding="10dp"
         />
     <TextView

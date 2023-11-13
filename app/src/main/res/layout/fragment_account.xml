@@ -112,6 +112,7 @@
                 android:textSize="18sp"/>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/id_qldh"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             app:cardCornerRadius="8dp"
@@ -122,7 +123,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="My Orders"
+                android:text="Quản lý đơn hàng"
                 android:textStyle="bold"
                 android:gravity="center_vertical"
                 android:textColor="@color/text_red"
