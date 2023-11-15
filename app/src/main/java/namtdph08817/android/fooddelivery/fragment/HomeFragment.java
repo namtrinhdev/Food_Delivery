@@ -2,6 +2,7 @@ package namtdph08817.android.fooddelivery.fragment;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,8 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.text.Html;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,6 +53,7 @@ public class HomeFragment extends Fragment {
     private ArrayList<LoaiThucPham> arrayList = new ArrayList<>();
     private LoaiThucPhamAdapter adapter;
     private EditText ed_search;
+    private TextView tv_hi_name, tv_style;
     private ViewPager2 slideshow;
     private CircleIndicator3 circleIndicator3;
     private SlideShowAdapter slideShowAdapter;
@@ -92,7 +96,15 @@ public class HomeFragment extends Fragment {
         circleIndicator3 = view.findViewById(R.id.id_circleindicator);
         ed_search = view.findViewById(R.id.ed_search);
         Gdview = view.findViewById(R.id.gridview);
+        tv_hi_name = view.findViewById(R.id.tv_hi_name);
+        tv_style = view.findViewById(R.id.tv_style_home);
 
+        //style tv
+        String htmlTxt = "Find your <br><b>Best Food</b> here";
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            Spanned spannedText = Html.fromHtml(htmlTxt, Html.FROM_HTML_MODE_LEGACY);
+            tv_style.setText(spannedText);
+        }
         //slideshow
         listPhoto();
         setSlideShow();
@@ -123,11 +135,7 @@ public class HomeFragment extends Fragment {
                         tab.setText("Ăn lằm ăn lốn");
                         break;
                 }
-
-                tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.bg_red));
-
-                // Set màu text khi không được chọn
-                tabLayout.setTabTextColors(getResources().getColor(R.color.bg_white), Color.parseColor("#FF4081"));
+                
             }
         });
         mediator.attach();

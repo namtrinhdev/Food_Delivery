@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViMoneyActivity"
+    android:background="@drawable/shape_gradient_bg">
+    <TextView
+        android:id="@+id/qqq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your wallet"
+        android:textColor="@color/text_normal"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        />
+    <ImageView
+        android:id="@+id/img_backpress_wallet"
+        android:layout_width="43dp"
+        android:layout_height="43dp"
+        android:background="@drawable/back_shape"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_backarrow"
+        android:padding="10dp"
+        android:rotation="45"
+        />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        app:cardBackgroundColor="#36E45B5B"
+        app:cardCornerRadius="150dp"
+        app:cardElevation="0dp"
+        app:cardPreventCornerOverlap="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/qqq"
+        app:contentPadding="16dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="150dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Số dư hiện tại"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/font1_semibold"
+                    android:layout_above="@+id/tv_so_du_tai_khoan"/>
+
+                <TextView
+                    android:id="@+id/tv_so_du_tai_khoan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="400.000.000 VND"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+                <ImageView
+                    android:id="@+id/img_show_hide_so_du"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/tv_so_du_tai_khoan"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

@@ -8,10 +8,13 @@
         android:id="@android:id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:minWidth="100dp"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:gravity="center"
+        android:drawableLeft="@drawable/icontab_selector"
+        android:drawablePadding="8dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/font1_medium"
         android:textColor="@drawable/text_color_selector"
         android:background="@drawable/tab_selector" />
 </LinearLayout>

@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import namtdph08817.android.fooddelivery.QLDH_Activity;
 import namtdph08817.android.fooddelivery.R;
+import namtdph08817.android.fooddelivery.ViMoneyActivity;
 
 public class AccountFragment extends Fragment {
     private CardView qldh;
@@ -48,5 +49,10 @@ public class AccountFragment extends Fragment {
                 startActivity(new Intent(getActivity(), QLDH_Activity.class));
             }
         });
+
+        view.findViewById(R.id.id_your_wallet).setOnClickListener(v -> {
+            startActivity(new Intent(getActivity(), ViMoneyActivity.class));
+        });
+
     }
 }
