@@ -61,7 +61,7 @@
                 app:cardCornerRadius="45dp">
 
                 <ImageView
-                    android:id="@+id/img_avatar"
+                    android:id="@+id/img_avatar_home"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitXY"
@@ -129,7 +129,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/id_circleindicator"
-            android:background="@drawable/shape_gradient_bg"
+            android:background="#20FBE2E2"
             app:tabMode="scrollable"
             app:tabInlineLabel="true"
             app:tabRippleColor="@null"

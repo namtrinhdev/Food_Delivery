@@ -68,6 +68,19 @@ public class SessionManager {
         // (You can implement an Intent to open the login screen)
     }
 
+    public Users getUsers(){
+        Users users = new Users();
+        users.set_id(sharedPreferences.getString(KEY_ID, ""));
+        users.setFullname(sharedPreferences.getString(KEY_FULL_NAME, ""));
+        users.setEmail(sharedPreferences.getString(KEY_EMAIL, ""));
+        users.setSdt(sharedPreferences.getString(KEY_PHONE_NUMBER, ""));
+        users.setDiaChi(sharedPreferences.getString(KEY_ADDRESS, ""));
+        users.setPasswd(sharedPreferences.getString(KEY_TOKEN, ""));
+        users.setVaitro(sharedPreferences.getInt(KEY_VAI_TRO, 0));
+        users.setAvatar(sharedPreferences.getString(KEY_AVATAR, ""));
+        users.setSoTien(sharedPreferences.getInt(KEY_MONEY, 0));
+        return users;
+    }
     public String getIdUser() {
         return sharedPreferences.getString(KEY_ID, "");
     }

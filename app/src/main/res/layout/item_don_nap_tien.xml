@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginTop="5dp"
+    android:layout_marginBottom="15dp"
     app:cardElevation="5dp"
     app:cardCornerRadius="7dp">
 
@@ -14,7 +14,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/bg_ed">
 
             <ImageView
                 android:id="@+id/nonused_ID_003"
@@ -44,7 +45,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/nonused_ID_004"
                 android:layout_toRightOf="@id/nonused_ID_003"
-                android:text="200.000 VNĐ"
                 android:textColor="#4CAF50"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -57,7 +57,6 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="10dp"
                 android:layout_toRightOf="@id/nonused_ID_003"
-                android:text="20/11/2000"
                 android:textColor="@color/text_2"
                 android:textSize="14sp" />
         </RelativeLayout>
@@ -78,12 +77,12 @@
                 android:layout_marginRight="10dp"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
+                android:visibility="visible"
                 android:background="@drawable/button_custom_1">
                 <TextView
                     android:id="@+id/tv_doi_tt_nap_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hủy đơn"
                     android:textColor="@color/bg_white"
                     android:textSize="15sp"
                     android:layout_gravity="center"/>

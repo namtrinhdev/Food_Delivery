@@ -11,13 +11,19 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 
 import namtdph08817.android.fooddelivery.QLDH_Activity;
 import namtdph08817.android.fooddelivery.R;
 import namtdph08817.android.fooddelivery.ViMoneyActivity;
+import namtdph08817.android.fooddelivery.classs.APIClass;
+import namtdph08817.android.fooddelivery.classs.SessionManager;
 
 public class AccountFragment extends Fragment {
-    private CardView qldh;
+    private ImageView img;
+    private SessionManager sessionManager;
     public AccountFragment() {
         // Required empty public constructor
     }
@@ -41,13 +47,16 @@ public class AccountFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        qldh = view.findViewById(R.id.id_qldh);
+        img = view.findViewById(R.id.img_avatar);
+        sessionManager = new SessionManager(getActivity());
+        //set image avatar
+        if (!sessionManager.getAvatar().equals("")){
+            String url = APIClass.URL+"uploads/"+sessionManager.getAvatar();
+            Glide.with(getActivity()).load(url).placeholder(R.drawable.logo).into(img);
+        }
 
-        qldh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        view.findViewById(R.id.id_qldh).setOnClickListener(v -> {
                 startActivity(new Intent(getActivity(), QLDH_Activity.class));
-            }
         });
 
         view.findViewById(R.id.id_your_wallet).setOnClickListener(v -> {

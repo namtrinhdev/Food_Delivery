@@ -1,17 +1,12 @@
 package namtdph08817.android.fooddelivery.fragment;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.SearchView;
-import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
@@ -25,14 +20,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.GridView;
-import android.widget.ListAdapter;
-import android.widget.ScrollView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -45,18 +38,21 @@ import namtdph08817.android.fooddelivery.SearchActivity;
 import namtdph08817.android.fooddelivery.adapter.AdapterQLDH;
 import namtdph08817.android.fooddelivery.adapter.LoaiThucPhamAdapter;
 import namtdph08817.android.fooddelivery.adapter.SlideShowAdapter;
+import namtdph08817.android.fooddelivery.classs.APIClass;
+import namtdph08817.android.fooddelivery.classs.SessionManager;
 import namtdph08817.android.fooddelivery.model.LoaiThucPham;
 import namtdph08817.android.fooddelivery.model.Photo;
 
 public class HomeFragment extends Fragment {
     private RecyclerView Gdview;
-    private ArrayList<LoaiThucPham> arrayList = new ArrayList<>();
+    private final ArrayList<LoaiThucPham> arrayList = new ArrayList<>();
     private LoaiThucPhamAdapter adapter;
     private EditText ed_search;
     private TextView tv_hi_name, tv_style;
     private ViewPager2 slideshow;
     private CircleIndicator3 circleIndicator3;
     private SlideShowAdapter slideShowAdapter;
+    private SessionManager sessionManager;
     private List<Photo> list = new ArrayList<>();
     private Handler handler = new Handler(Looper.getMainLooper());
     private Runnable mRunable = new Runnable() {
@@ -98,7 +94,17 @@ public class HomeFragment extends Fragment {
         Gdview = view.findViewById(R.id.gridview);
         tv_hi_name = view.findViewById(R.id.tv_hi_name);
         tv_style = view.findViewById(R.id.tv_style_home);
+        ImageView img_avtar = view.findViewById(R.id.img_avatar_home);
 
+        sessionManager = new SessionManager(getContext());
+        ///set image avatar
+        if (!sessionManager.getAvatar().equals("")){
+            String url = APIClass.URL+"uploads/"+sessionManager.getAvatar();
+            Glide.with(getActivity()).load(url).placeholder(R.drawable.logo).into(img_avtar);
+        }
+        //set text hello
+        String hello = "Hi, "+sessionManager.getFullName();
+        tv_hi_name.setText(hello);
         //style tv
         String htmlTxt = "Find your <br><b>Best Food</b> here";
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
