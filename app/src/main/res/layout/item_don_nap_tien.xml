@@ -29,12 +29,11 @@
                 android:src="@drawable/ic_account" />
 
             <TextView
-                android:id="@+id/nonused_ID_004"
+                android:id="@+id/tv_tieuDeNapTien"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/nonused_ID_003"
                 android:fontFamily="@font/font1_semibold"
-                android:text="Nạp tiền vào ví"
                 android:textColor="@color/black"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -43,7 +42,7 @@
                 android:id="@+id/tv_tien_nap_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/nonused_ID_004"
+                android:layout_below="@id/tv_tieuDeNapTien"
                 android:layout_toRightOf="@id/nonused_ID_003"
                 android:textColor="#4CAF50"
                 android:textSize="16sp"

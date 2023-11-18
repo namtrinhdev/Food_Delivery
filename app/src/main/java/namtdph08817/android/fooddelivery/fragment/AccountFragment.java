@@ -15,6 +15,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
+import namtdph08817.android.fooddelivery.LoginActivity;
 import namtdph08817.android.fooddelivery.QLDH_Activity;
 import namtdph08817.android.fooddelivery.R;
 import namtdph08817.android.fooddelivery.ViMoneyActivity;
@@ -63,5 +64,14 @@ public class AccountFragment extends Fragment {
             startActivity(new Intent(getActivity(), ViMoneyActivity.class));
         });
 
+        view.findViewById(R.id.id_thong_tin_ca_nhan).setOnClickListener(v ->{
+//            startActivity(new Intent(getActivity(), InformationActivity.class));
+        });
+
+        view.findViewById(R.id.id_logout).setOnClickListener(v -> {
+            startActivity(new Intent(getActivity(), LoginActivity.class));
+            sessionManager.logoutUser();
+            getActivity().finish();
+        });
     }
 }

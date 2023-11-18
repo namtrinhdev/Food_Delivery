@@ -44,6 +44,7 @@ public class QL_Don_Nap_Adapter extends RecyclerView.Adapter<QL_Don_Nap_Adapter.
         NapTien model = arrayList.get(position);
         SessionManager sessionManager = new SessionManager(context);
         holder.tv_money.setText(String.valueOf(model.getSoTienNap()));
+        holder.tv_title.setText(model.getUserModel().getFullname()+" nạp tiền");
         holder.tv_time.setText(model.getThoiGian());
         if (model.getTrangThai() == 1){
             holder.btn_tt.setVisibility(View.VISIBLE);
@@ -70,11 +71,12 @@ public class QL_Don_Nap_Adapter extends RecyclerView.Adapter<QL_Don_Nap_Adapter.
     }
 
     public class QHDNViewHolder extends RecyclerView.ViewHolder {
-        private TextView tv_money,tv_time,tv_txt;
+        private TextView tv_money,tv_time,tv_txt, tv_title;
         private FrameLayout btn_tt;
         public QHDNViewHolder(@NonNull View itemView) {
             super(itemView);
             tv_money = itemView.findViewById(R.id.tv_tien_nap_item);
+            tv_title = itemView.findViewById(R.id.tv_tieuDeNapTien);
             tv_time = itemView.findViewById(R.id.tv_time_nap_item);
             tv_txt = itemView.findViewById(R.id.tv_doi_tt_nap_item);
             btn_tt = itemView.findViewById(R.id.btn_doi_tt_nap_item);

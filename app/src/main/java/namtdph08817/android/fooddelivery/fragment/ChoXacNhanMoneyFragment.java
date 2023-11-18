@@ -81,8 +81,6 @@ public class ChoXacNhanMoneyFragment extends Fragment {
             public void onChange(String id) {
                 SimpleDateFormat sdf = new SimpleDateFormat("HH:mm dd/MM/yyyy");
                 String thoiGian = sdf.format(new Date());
-                RequestBody vaiTro = RequestBody.create(MediaType.parse("text/plain"), String.valueOf(sessionManager.getVaiTro()));
-                RequestBody time = RequestBody.create(MediaType.parse("text/plain"), thoiGian);
                 Call<Messages> callPut = mInterface.putRequestNapTien(id,sessionManager.getVaiTro(),thoiGian);
                 callPut.enqueue(new Callback<Messages>() {
                     @Override
@@ -108,7 +106,6 @@ public class ChoXacNhanMoneyFragment extends Fragment {
 
     private void loadData() {
         Call<List<NapTien>> call;
-        Log.d(TAG, sessionManager.getVaiTro() + "");
         if (sessionManager.getVaiTro() == 0) {
             //admin
             call = mInterface.getAllDonChoXacNhan();

@@ -8,6 +8,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import namtdph08817.android.fooddelivery.fragment.ChoXacNhanMoneyFragment;
 import namtdph08817.android.fooddelivery.fragment.DaGiaoHangFragment;
 import namtdph08817.android.fooddelivery.fragment.DaHuyMoneyFragment;
+import namtdph08817.android.fooddelivery.fragment.DaXacNhanMoneyFragment;
 
 public class AdapterDonNapViewPager extends FragmentStateAdapter {
     public AdapterDonNapViewPager(@NonNull FragmentActivity fragmentActivity) {
@@ -23,7 +24,7 @@ public class AdapterDonNapViewPager extends FragmentStateAdapter {
                 fragment = ChoXacNhanMoneyFragment.newInstance();
                 break;
             case 1:
-                fragment = DaGiaoHangFragment.newInstance();
+                fragment = DaXacNhanMoneyFragment.newInstance();
                 break;
             case 2:
                 fragment = DaHuyMoneyFragment.newInstance();

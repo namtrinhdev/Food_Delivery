@@ -20,8 +20,16 @@ import retrofit2.http.Path;
 public interface NapTienInterface {
     @GET("api/naptien/waitconfirm")
     Call<List<NapTien>> getAllDonChoXacNhan();
+    @GET("api/naptien/confirmed")
+    Call<List<NapTien>> getAllDonDaXacNhan();
+    @GET("api/naptien/canceled")
+    Call<List<NapTien>> getAllDonDaHuy();
     @GET("api/naptien/waitconfirm/{idUser}")
     Call<List<NapTien>> getAllDonChoXacNhanById(@Path("idUser") String iduser);
+    @GET("api/naptien/confirmed/{idUser}")
+    Call<List<NapTien>> getAllDonDaXacNhanById(@Path("idUser") String iduser);
+    @GET("api/naptien/canceled/{idUser}")
+    Call<List<NapTien>> getAllDonDaHuyById(@Path("idUser") String iduser);
     @Multipart
     @POST("api/naptien/post")
     Call<Messages> postRequestNapTien(@Part MultipartBody.Part imgGD,
@@ -32,6 +40,5 @@ public interface NapTienInterface {
     @PUT("api/naptien/put/{id}")
     Call<Messages> putRequestNapTien(@Path("id") String _id,
                                      @Field("vaitro") int vaitro,
-                                     @Field("thoiGian") String thoiGian
-                                     );
+                                     @Field("thoiGian") String thoiGian);
 }

@@ -5,16 +5,43 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import namtdph08817.android.fooddelivery.R;
+import namtdph08817.android.fooddelivery.adapter.AdapterDonNapViewPager;
+import namtdph08817.android.fooddelivery.adapter.QL_Don_Nap_Adapter;
+import namtdph08817.android.fooddelivery.classs.RetrofitClientAPI;
+import namtdph08817.android.fooddelivery.classs.SessionManager;
+import namtdph08817.android.fooddelivery.interfaces.ChangeStatusDonNapInterface;
+import namtdph08817.android.fooddelivery.interfaces.NapTienInterface;
+import namtdph08817.android.fooddelivery.model.Messages;
+import namtdph08817.android.fooddelivery.model.NapTien;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class DaXacNhanMoneyFragment extends Fragment {
-
+    private ArrayList<NapTien> arrayList = new ArrayList<>();
+    private QL_Don_Nap_Adapter adapter;
+    private RecyclerView recyclerView;
+    private SessionManager sessionManager;
+    private NapTienInterface mInterface;
+    private final String TAG = "ConfirmedFrg";
 
     public DaXacNhanMoneyFragment() {
         // Required empty public constructor
@@ -41,5 +68,97 @@ public class DaXacNhanMoneyFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        recyclerView = view.findViewById(R.id.id_recycle_daXacNhanMoney);
+
+        sessionManager = new SessionManager(getContext());
+        mInterface = RetrofitClientAPI.getRetrofitInstance().create(NapTienInterface.class);
+        adapter = new QL_Don_Nap_Adapter(getActivity(), new ChangeStatusDonNapInterface() {
+            @Override
+            public void onChange(String id) {
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm dd/MM/yyyy");
+                String thoiGian = sdf.format(new Date());
+                Call<Messages> callPut = mInterface.putRequestNapTien(id,sessionManager.getVaiTro(),thoiGian);
+                callPut.enqueue(new Callback<Messages>() {
+                    @Override
+                    public void onResponse(Call<Messages> call, Response<Messages> response) {
+                        if (response.isSuccessful()){
+                            Messages msg = response.body();
+                            Toast.makeText(getActivity(), msg.getMsg(), Toast.LENGTH_SHORT).show();
+                            onResume();
+                        }else {
+                            Log.e(TAG, "onResponse error: not successful" );
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Messages> call, Throwable t) {
+                        Log.e(TAG, "onFailure: ",t);
+                    }
+                });
+            }
+        });
+        loadData();
+    }
+
+    private void loadData() {
+        Call<List<NapTien>> call;
+        if (sessionManager.getVaiTro() == 0) {
+            //admin
+            call = mInterface.getAllDonDaXacNhan();
+            call.enqueue(new Callback<List<NapTien>>() {
+                @Override
+                public void onResponse(Call<List<NapTien>> call, Response<List<NapTien>> response) {
+                    if (response.isSuccessful()) {
+                        List<NapTien> listNaptien = response.body();
+                        arrayList = (ArrayList<NapTien>) listNaptien;
+                        adapter.setData(arrayList);
+                        LinearLayoutManager manager = new LinearLayoutManager(getContext(),
+                                LinearLayoutManager.VERTICAL, false);
+                        recyclerView.setLayoutManager(manager);
+                        recyclerView.setAdapter(adapter);
+                    } else {
+                        Log.e(TAG, "onResponse: ");
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<NapTien>> call, Throwable t) {
+                    Log.e(TAG, "onFailure: ", t);
+                }
+            });
+        } else {
+            //user
+            String idUser = sessionManager.getIdUser();
+            call = mInterface.getAllDonDaXacNhanById(idUser);
+            call.enqueue(new Callback<List<NapTien>>() {
+                @Override
+                public void onResponse(Call<List<NapTien>> call, Response<List<NapTien>> response) {
+                    if (response.isSuccessful()) {
+                        List<NapTien> listNaptien = response.body();
+                        arrayList = (ArrayList<NapTien>) listNaptien;
+                        adapter.setData(arrayList);
+                        LinearLayoutManager manager = new LinearLayoutManager(getContext(),
+                                LinearLayoutManager.VERTICAL, false);
+                        recyclerView.setLayoutManager(manager);
+                        recyclerView.setAdapter(adapter);
+                    } else {
+                        Log.e(TAG, "onResponse: ");
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<NapTien>> call, Throwable t) {
+                    Log.e(TAG, "onFailure: ",t );
+                }
+            });
+        }
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        arrayList.clear();
+        loadData();
     }
 }
