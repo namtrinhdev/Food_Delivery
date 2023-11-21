@@ -16,14 +16,12 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.Html;
 import android.text.Spanned;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.tabs.TabLayout;
@@ -36,16 +34,17 @@ import me.relex.circleindicator.CircleIndicator3;
 import namtdph08817.android.fooddelivery.R;
 import namtdph08817.android.fooddelivery.SearchActivity;
 import namtdph08817.android.fooddelivery.adapter.AdapterQLDH;
+import namtdph08817.android.fooddelivery.adapter.Adapter_Food_Home;
 import namtdph08817.android.fooddelivery.adapter.LoaiThucPhamAdapter;
 import namtdph08817.android.fooddelivery.adapter.SlideShowAdapter;
 import namtdph08817.android.fooddelivery.classs.APIClass;
 import namtdph08817.android.fooddelivery.classs.SessionManager;
-import namtdph08817.android.fooddelivery.model.LoaiThucPham;
+import namtdph08817.android.fooddelivery.model.FoodType;
 import namtdph08817.android.fooddelivery.model.Photo;
 
 public class HomeFragment extends Fragment {
     private RecyclerView Gdview;
-    private final ArrayList<LoaiThucPham> arrayList = new ArrayList<>();
+    private final ArrayList<FoodType> arrayList = new ArrayList<>();
     private LoaiThucPhamAdapter adapter;
     private EditText ed_search;
     private TextView tv_hi_name, tv_style;
@@ -118,8 +117,8 @@ public class HomeFragment extends Fragment {
         //tablayout
         TabLayout tabLayout = view.findViewById(R.id.id_tablayout_home);
         ViewPager2 viewPager2 = view.findViewById(R.id.id_viewpager2_home);
-        AdapterQLDH adapterQLDH = new AdapterQLDH(requireActivity());
-        viewPager2.setAdapter(adapterQLDH);
+        Adapter_Food_Home adapterFoodHome = new Adapter_Food_Home(requireActivity());
+        viewPager2.setAdapter(adapterFoodHome);
         TabLayoutMediator mediator = new TabLayoutMediator(tabLayout, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
@@ -138,20 +137,14 @@ public class HomeFragment extends Fragment {
                         tab.setText("Ăn tối");
                         break;
                     case 4:
-                        tab.setText("Ăn lằm ăn lốn");
+                        tab.setText("Khác");
                         break;
                 }
                 
             }
         });
         mediator.attach();
-
-
-        //list foodtype
-        listData();
-        adapter = new LoaiThucPhamAdapter(getActivity(),arrayList);
-        Gdview.setLayoutManager(new GridLayoutManager(getActivity(), 4));
-        Gdview.setAdapter(adapter);
+        viewPager2.setUserInputEnabled(false);
 
         ed_search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -201,13 +194,6 @@ public class HomeFragment extends Fragment {
         list.add(new Photo(R.drawable.banner4));
     }
 
-    private void listData() {
-        arrayList.add(new LoaiThucPham("Ăn sáng",R.drawable.icon_pho));
-        arrayList.add(new LoaiThucPham("Ăn trưa",R.drawable.icon_banhmi));
-        arrayList.add(new LoaiThucPham("Ăn tối",R.drawable.icon_pho));
-        arrayList.add(new LoaiThucPham("Cơm",R.drawable.icon_banhmi));
-        arrayList.add(new LoaiThucPham("Phở",R.drawable.icon_pho));
-        arrayList.add(new LoaiThucPham("Bún",R.drawable.icon_banhmi));
-    }
+
 
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="170dp"
+    android:padding="15dp"
+    android:background="@color/bg_white">
+    <RadioGroup
+        android:id="@+id/rd_group_thanhToan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/rd_cash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thanh toán bằng tiền mặt"
+            android:textSize="18sp"/>
+        <RadioButton
+            android:id="@+id/rd_wallet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thanh toán bằng tài khoản ví"
+            android:textSize="18sp"/>
+    </RadioGroup>
+</LinearLayout>

@@ -15,12 +15,14 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
+import namtdph08817.android.fooddelivery.InformationActivity;
 import namtdph08817.android.fooddelivery.LoginActivity;
 import namtdph08817.android.fooddelivery.QLDH_Activity;
 import namtdph08817.android.fooddelivery.R;
 import namtdph08817.android.fooddelivery.ViMoneyActivity;
 import namtdph08817.android.fooddelivery.classs.APIClass;
 import namtdph08817.android.fooddelivery.classs.SessionManager;
+import namtdph08817.android.fooddelivery.model.Cart2;
 
 public class AccountFragment extends Fragment {
     private ImageView img;
@@ -65,12 +67,13 @@ public class AccountFragment extends Fragment {
         });
 
         view.findViewById(R.id.id_thong_tin_ca_nhan).setOnClickListener(v ->{
-//            startActivity(new Intent(getActivity(), InformationActivity.class));
+            startActivity(new Intent(getActivity(), InformationActivity.class));
         });
 
         view.findViewById(R.id.id_logout).setOnClickListener(v -> {
             startActivity(new Intent(getActivity(), LoginActivity.class));
             sessionManager.logoutUser();
+            Cart2.getInstance().clear();
             getActivity().finish();
         });
     }

@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="150dp"
-    android:layout_height="225dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="10dp"
+    app:cardCornerRadius="10dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp"
+    android:layout_marginTop="20dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/shape_item_food">
+        android:layout_height="match_parent">
         <androidx.cardview.widget.CardView
             android:id="@+id/zzzz"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="10dp"
+            app:cardElevation="0dp"
             android:layout_margin="1.5dp">
             <ImageView
                 android:id="@+id/img_item_newfood"
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="150dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_launcher_background"
                 />
@@ -29,40 +34,36 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/zzzz"
             android:textAlignment="center"
-            android:text="TÊN MÓN"
-            android:textStyle="bold"
-            android:textSize="18sp"
+            android:text="Xôi xéo"
+            android:fontFamily="@font/font1_semibold"
+            android:textSize="24sp"
             android:textColor="@color/text_normal"
             android:layout_marginTop="10dp"/>
         <TextView
             android:id="@+id/tv_item_money"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_item_namefood"
             android:textAlignment="center"
-            android:text="Số tiền"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="@color/text_2"
-            android:layout_marginTop="3dp"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_vitri"
-            android:layout_below="@+id/tv_item_money"
-            android:layout_toLeftOf="@+id/tv_item_distance"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="5dp"/>
-        <TextView
-            android:id="@+id/tv_item_distance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_item_money"
+            android:text="50.000"
+            android:fontFamily="@font/font1_semibold"
+            android:textSize="23sp"
+            android:textColor="@color/bg_red"
             android:layout_centerHorizontal="true"
-            android:text="30 Km"
-            android:textSize="17sp"
-            android:textColor="@color/text_1"
+            android:drawableLeft="@drawable/ic__money"
             android:layout_marginTop="3dp"
-            />
+            android:layout_marginBottom="15dp"/>
+<!--        <TextView-->
+<!--            android:id="@+id/tv_item_distance"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/tv_item_money"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:text="30 Km"-->
+<!--            android:textSize="17sp"-->
+<!--            android:textColor="@color/text_1"-->
+<!--            android:drawableLeft="@drawable/ic_vitri"-->
+<!--            android:layout_marginTop="3dp"-->
+<!--            />-->
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

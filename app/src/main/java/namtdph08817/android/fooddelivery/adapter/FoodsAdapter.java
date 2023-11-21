@@ -10,29 +10,46 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 import namtdph08817.android.fooddelivery.R;
+import namtdph08817.android.fooddelivery.classs.APIClass;
+import namtdph08817.android.fooddelivery.interfaces.Next_interface;
+import namtdph08817.android.fooddelivery.model.Foods;
 
-public class NewFoodAdapter extends RecyclerView.Adapter<NewFoodAdapter.FoodViewHolder> {
+public class FoodsAdapter extends RecyclerView.Adapter<FoodsAdapter.FoodViewHolder> {
     private Context context;
-    private ArrayList<String> arrayList;
+    private ArrayList<Foods> arrayList;
+    private Next_interface anInterface;
 
-    public NewFoodAdapter(Context context, ArrayList<String> arrayList) {
+    public FoodsAdapter(Context context, Next_interface anInterface) {
         this.context = context;
+        this.anInterface = anInterface;
+    }
+    public void setData(ArrayList<Foods> arrayList){
         this.arrayList = arrayList;
+        notifyDataSetChanged();
     }
 
     @NonNull
     @Override
-    public NewFoodAdapter.FoodViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FoodsAdapter.FoodViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_newfood,parent,false);
         return new FoodViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NewFoodAdapter.FoodViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull FoodsAdapter.FoodViewHolder holder, int position) {
+        Foods model = arrayList.get(position);
+        holder.tv_name.setText(model.getNameFood());
+        holder.tv_price.setText(String.valueOf(model.getPrice()));
+        String url = APIClass.URL + "uploads/"+model.getImage();
+        Glide.with(context).load(url).into(holder.imgavatar);
+        holder.itemView.setOnClickListener(view -> {
+            anInterface.onNextPage(model);
+        });
     }
 
     @Override
@@ -50,7 +67,6 @@ public class NewFoodAdapter extends RecyclerView.Adapter<NewFoodAdapter.FoodView
             super(itemView);
             tv_name = itemView.findViewById(R.id.tv_item_namefood);
             tv_price = itemView.findViewById(R.id.tv_item_money);
-            tv_space = itemView.findViewById(R.id.tv_item_distance);
             imgavatar = itemView.findViewById(R.id.img_item_newfood);
         }
     }

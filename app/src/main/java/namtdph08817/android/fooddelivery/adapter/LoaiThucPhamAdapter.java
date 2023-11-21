@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,14 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import namtdph08817.android.fooddelivery.R;
-import namtdph08817.android.fooddelivery.model.LoaiThucPham;
+import namtdph08817.android.fooddelivery.model.FoodType;
 
 
 public class LoaiThucPhamAdapter extends RecyclerView.Adapter<LoaiThucPhamAdapter.viewHodel> {
     private Context context;
-    private ArrayList<LoaiThucPham> list;
+    private ArrayList<FoodType> list;
 
-    public LoaiThucPhamAdapter(Context context, ArrayList<LoaiThucPham> list) {
+    public LoaiThucPhamAdapter(Context context, ArrayList<FoodType> list) {
         this.context = context;
         this.list = list;
         notifyDataSetChanged();
@@ -36,7 +35,7 @@ public class LoaiThucPhamAdapter extends RecyclerView.Adapter<LoaiThucPhamAdapte
 
     @Override
     public void onBindViewHolder(@NonNull LoaiThucPhamAdapter.viewHodel holder, int position) {
-        LoaiThucPham model = list.get(position);
+        FoodType model = list.get(position);
         holder.tvname.setText(model.getTenLoai());
         holder.img.setImageResource(model.getImg());
     }

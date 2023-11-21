@@ -1,15 +1,17 @@
 package namtdph08817.android.fooddelivery.model;
 
-public class LoaiThucPham {
+import java.io.Serializable;
+
+public class FoodType implements Serializable {
     private String tenLoai;
     private int img;
 
-    public LoaiThucPham(String tenLoai, int img) {
+    public FoodType(String tenLoai, int img) {
         this.tenLoai = tenLoai;
         this.img = img;
     }
 
-    public LoaiThucPham() {
+    public FoodType() {
     }
 
     public String getTenLoai() {

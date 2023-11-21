@@ -85,6 +85,7 @@ public class LoginActivity extends AppCompatActivity {
                                 sessionManager.setIsRemember(true);
                                 sessionManager.createLoginSession(mList.getData());
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                finish();
                                 Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(LoginActivity.this, "Có lỗi xảy ra, vui lòng đăng nhập lại sau", Toast.LENGTH_SHORT).show();
