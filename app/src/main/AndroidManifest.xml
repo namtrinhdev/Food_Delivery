@@ -19,6 +19,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".QLFoodTypeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".QLFoodsActivity"
+            android:exported="false" />
+        <activity
             android:name=".InformationActivity"
             android:exported="false" />
         <activity

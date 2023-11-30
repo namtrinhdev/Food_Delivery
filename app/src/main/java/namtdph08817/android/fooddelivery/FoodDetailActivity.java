@@ -105,6 +105,7 @@ public class FoodDetailActivity extends AppCompatActivity {
                 Cart cart = new Cart(food, count);
                 if (list.size() == 0) {
                     list.add(cart);
+                    Toast.makeText(this, "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
                     if (food.getQuantity() == count) {
                         count = 0;
                         tv_quantity.setText(String.valueOf(count));
@@ -136,6 +137,7 @@ public class FoodDetailActivity extends AppCompatActivity {
                             tv_price.setText(count * food.getPrice() + " đ");
                         }
                     } else {
+                        Toast.makeText(this, "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
                         list.add(cart);
                         if (food.getQuantity() == count) {
                             count = 0;

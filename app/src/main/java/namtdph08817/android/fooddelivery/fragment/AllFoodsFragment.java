@@ -70,6 +70,12 @@ public class AllFoodsFragment extends Fragment {
                 i.putExtra("food_data", (Serializable) foods);
                 startActivity(i);
             }
+
+            @Override
+            public void onClickItem(String id) {
+
+            }
+
         });
         loadData();
     }

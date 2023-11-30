@@ -3,15 +3,23 @@ package namtdph08817.android.fooddelivery.model;
 import java.io.Serializable;
 
 public class FoodType implements Serializable {
-    private String tenLoai;
-    private int img;
+    private String _id, tenLoai;
+    private String icon;
 
-    public FoodType(String tenLoai, int img) {
+    public FoodType(String tenLoai, String icon) {
         this.tenLoai = tenLoai;
-        this.img = img;
+        this.icon = icon;
     }
 
     public FoodType() {
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public String getTenLoai() {
@@ -22,11 +30,11 @@ public class FoodType implements Serializable {
         this.tenLoai = tenLoai;
     }
 
-    public int getImg() {
-        return img;
+    public String getIcon() {
+        return icon;
     }
 
-    public void setImg(int img) {
-        this.img = img;
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 }

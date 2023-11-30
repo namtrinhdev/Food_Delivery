@@ -1,10 +1,12 @@
 package namtdph08817.android.fooddelivery;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -12,51 +14,140 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import namtdph08817.android.fooddelivery.adapter.Adapter_DonHang;
+import namtdph08817.android.fooddelivery.classs.RetrofitClientAPI;
 import namtdph08817.android.fooddelivery.classs.SessionManager;
+import namtdph08817.android.fooddelivery.interfaces.ThanhToanAPI_Interface;
 import namtdph08817.android.fooddelivery.model.Cart2;
+import namtdph08817.android.fooddelivery.model.Messages;
+import namtdph08817.android.fooddelivery.model.ThanhToan;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ThanhToanActivity extends AppCompatActivity {
     private SessionManager sessionManager;
     private RecyclerView recyclerView;
-    private FrameLayout btn_address,btn_choose_thanhToan;
+    private FrameLayout btn_address, btn_choose_thanhToan;
     private RelativeLayout view_viTien;
     private Button btn_Dat_Hang;
-    private TextView tv_address, tv_pt_thanhToan, tv_soDuHT, tv_tongDonHang, tv_soDuMoi,tv_Total_Price, tv_msg, tv_title;
+    private TextView tv_address, tv_pt_thanhToan, tv_soDuHT, tv_tongDonHang, tv_soDuMoi, tv_Total_Price, tv_msg, tv_title;
     private boolean tag;
+    private ThanhToanAPI_Interface mInterface;
+    private Adapter_DonHang adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thanh_toan);
-        sessionManager = new SessionManager(this);
         anhxa();
+        //khoi tao
+        sessionManager = new SessionManager(this);
+        mInterface = RetrofitClientAPI.getRetrofitInstance().create(ThanhToanAPI_Interface.class);
 
         //set dia chi
-        if (sessionManager.getAddress().equals("")){
+        if (sessionManager.getAddress().equals("")) {
             tv_address.setText("Thêm địa chỉ giao hàng");
-        }else {
+        } else {
             tv_address.setText(sessionManager.getAddress());
         }
         btn_address.setOnClickListener(view -> {
-            if (sessionManager.getAddress().equals("")){
+            if (sessionManager.getAddress().equals("")) {
                 startActivity(new Intent(ThanhToanActivity.this, InformationActivity.class));
             }
         });
-        //an vi, set total price
+
+        //hien thi danh sach don hang
+        adapter = new Adapter_DonHang(this);
+        adapter.setData(Cart2.getInstance().getCart());
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        recyclerView.setAdapter(adapter);
+
+        //hide wallet, set total price
         setVisibilityVi(false);
-        tv_Total_Price.setText(Cart2.instance.getTotalPrice()+" đ");
+        tv_Total_Price.setText(Cart2.instance.getTotalPrice() + " đ");
 
         //click option thanh toan
-        tag= true;
+        tag = true;
         btn_choose_thanhToan.setOnClickListener(view -> {
             openDialogBottom();
         });
+
         //back press
         findViewById(R.id.img_backpress_thanhtoan).setOnClickListener(view -> {
             onBackPressed();
         });
+
+        //click dat hang
+        btn_Dat_Hang.setOnClickListener(view -> {
+            if (sessionManager.getAddress().equals("")) {
+                Toast.makeText(this, "Vui lòng thêm địa chỉ giao hàng", Toast.LENGTH_SHORT).show();
+            } else {
+                if (!tag) {
+                    if (!checkMoney()) {
+                        Toast.makeText(this, "Số dư không đủ, vui lòng chọn phương thức thanh toán khác", Toast.LENGTH_SHORT).show();
+                    } else {
+                        postData();
+                        sessionManager.setMoney(sessionManager.getMoney() - Cart2.getInstance().getTotalPrice());
+                        Cart2.getInstance().clear();
+                        startActivity(new Intent(ThanhToanActivity.this, QLDH_Activity.class));
+                        finish();
+                    }
+                } else {
+                    postData();
+                    Cart2.getInstance().clear();
+                    startActivity(new Intent(ThanhToanActivity.this, QLDH_Activity.class));
+                    finish();
+                }
+            }
+        });
+    }
+
+    private void postData() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        String thoiGian = sdf.format(new Date());
+        ThanhToan data = new ThanhToan();
+        data.setCart(Cart2.getInstance().getCart());
+        data.setUser(sessionManager.getUsers());
+        data.setTongTien(Cart2.getInstance().getTotalPrice());
+        data.setThoiGian(thoiGian);
+        data.setPayOptions(optionPayment());
+        Call<Messages> call = mInterface.postDonHang(data);
+        call.enqueue(new Callback<Messages>() {
+            @Override
+            public void onResponse(Call<Messages> call, Response<Messages> response) {
+                if (response.isSuccessful()) {
+                    Messages msg = response.body();
+                    Toast.makeText(ThanhToanActivity.this, msg.getMsg(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Log.e("Failure post", "onFailure: ");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Messages> call, Throwable t) {
+                Log.e("Failure post", "onFailure: ", t);
+                Toast.makeText(ThanhToanActivity.this, "Lỗi kết nối server", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private int optionPayment() {
+        if (checkMoney()) {
+            return tag ? 0 : 1;
+        }
+        return 0;
+    }
+
+    private boolean checkMoney() {
+        return Cart2.getInstance().getTotalPrice() > sessionManager.getMoney() ? false : true;
     }
 
     private void anhxa() {
@@ -74,27 +165,28 @@ public class ThanhToanActivity extends AppCompatActivity {
         tv_title = findViewById(R.id.tv_title_money_thanhToan);
         view_viTien = findViewById(R.id.id_yourMoney_thanhToan);
     }
-    private void setVisibilityVi(boolean visible){
-        if (visible){
+
+    private void setVisibilityVi(boolean visible) {
+        if (visible) {
             int totalPrice = Cart2.getInstance().getTotalPrice();
             tv_title.setVisibility(View.VISIBLE);
             view_viTien.setVisibility(View.VISIBLE);
-            tv_soDuHT.setText(sessionManager.getMoney() +" đ");
-            tv_tongDonHang.setText(totalPrice+" đ");
-            tv_soDuMoi.setText(sessionManager.getMoney() - totalPrice +" đ" );
-            if (sessionManager.getMoney() < totalPrice){
+            tv_soDuHT.setText(sessionManager.getMoney() + " đ");
+            tv_tongDonHang.setText(totalPrice + " đ");
+            tv_soDuMoi.setText(sessionManager.getMoney() - totalPrice + " đ");
+            if (sessionManager.getMoney() < totalPrice) {
                 tv_msg.setVisibility(View.VISIBLE);
-            }else {
+            } else {
                 tv_msg.setVisibility(View.INVISIBLE);
             }
-        }else {
+        } else {
             tv_title.setVisibility(View.INVISIBLE);
             view_viTien.setVisibility(View.INVISIBLE);
             tv_msg.setVisibility(View.INVISIBLE);
         }
     }
 
-    private void openDialogBottom(){
+    private void openDialogBottom() {
         View view = getLayoutInflater().inflate(R.layout.layout_bottom_sheet, null);
         BottomSheetDialog dialog = new BottomSheetDialog(this);
         dialog.setContentView(view);
@@ -103,9 +195,9 @@ public class ThanhToanActivity extends AppCompatActivity {
         RadioGroup radioGroup = view.findViewById(R.id.rd_group_thanhToan);
         RadioButton btn_cash = view.findViewById(R.id.rd_cash);
         RadioButton btn_wallet = view.findViewById(R.id.rd_wallet);
-        if (tag){
+        if (tag) {
             btn_cash.setChecked(true);
-        }else {
+        } else {
             btn_wallet.setChecked(true);
         }
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

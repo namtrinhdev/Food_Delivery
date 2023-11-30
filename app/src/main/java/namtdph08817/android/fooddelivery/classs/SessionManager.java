@@ -53,7 +53,26 @@ public class SessionManager {
         editor.putBoolean(KEY_IS_REMEMBER, check);
         editor.apply();
     }
-
+    public void setMoney(int soTien){
+        editor.putInt(KEY_MONEY,soTien);
+        editor.apply();
+    }
+    public void setAddress(String address){
+        editor.putString(KEY_ADDRESS,address);
+        editor.apply();
+    }
+    public void setPhoneNumber(String phoneNumber){
+        editor.putString(KEY_PHONE_NUMBER,phoneNumber);
+        editor.apply();
+    }
+    public void setToken(String token){
+        editor.putString(KEY_TOKEN,token);
+        editor.apply();
+    }
+    public void setFullName(String name){
+        editor.putString(KEY_FULL_NAME,name);
+        editor.apply();
+    }
     public void checkLogin() {
         if (!isLoggedIn()) {
             // Redirect to the login screen if not logged in

@@ -6,8 +6,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
@@ -33,19 +31,13 @@ import java.util.List;
 import me.relex.circleindicator.CircleIndicator3;
 import namtdph08817.android.fooddelivery.R;
 import namtdph08817.android.fooddelivery.SearchActivity;
-import namtdph08817.android.fooddelivery.adapter.AdapterQLDH;
 import namtdph08817.android.fooddelivery.adapter.Adapter_Food_Home;
-import namtdph08817.android.fooddelivery.adapter.LoaiThucPhamAdapter;
 import namtdph08817.android.fooddelivery.adapter.SlideShowAdapter;
 import namtdph08817.android.fooddelivery.classs.APIClass;
 import namtdph08817.android.fooddelivery.classs.SessionManager;
-import namtdph08817.android.fooddelivery.model.FoodType;
 import namtdph08817.android.fooddelivery.model.Photo;
 
 public class HomeFragment extends Fragment {
-    private RecyclerView Gdview;
-    private final ArrayList<FoodType> arrayList = new ArrayList<>();
-    private LoaiThucPhamAdapter adapter;
     private EditText ed_search;
     private TextView tv_hi_name, tv_style;
     private ViewPager2 slideshow;
@@ -90,7 +82,6 @@ public class HomeFragment extends Fragment {
         slideshow = view.findViewById(R.id.id_slide_show);
         circleIndicator3 = view.findViewById(R.id.id_circleindicator);
         ed_search = view.findViewById(R.id.ed_search);
-        Gdview = view.findViewById(R.id.gridview);
         tv_hi_name = view.findViewById(R.id.tv_hi_name);
         tv_style = view.findViewById(R.id.tv_style_home);
         ImageView img_avtar = view.findViewById(R.id.img_avatar_home);

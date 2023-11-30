@@ -22,7 +22,7 @@
             android:layout_marginRight="29dp"
             android:layout_marginBottom="15dp"
             android:layout_toLeftOf="@+id/cv"
-            android:text="Hi, Trịnh Đình Nam"
+            android:text="Xin chào, Trịnh Đình Nam"
             android:textStyle="normal"
             android:textColor="@color/black"
             android:textSize="22sp" />
@@ -64,8 +64,8 @@
                     android:id="@+id/img_avatar_home"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/ic_launcher_background" />
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_default_user" />
             </androidx.cardview.widget.CardView>
 
         </androidx.cardview.widget.CardView>
@@ -110,20 +110,6 @@
             app:ci_drawable="@drawable/shape_circle_indicator"/>
 
 
-
-<!--        <ImageButton-->
-<!--            android:id="@+id/btnFilter"-->
-<!--            android:layout_width="50dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:background="@drawable/button_custom_1"-->
-<!--            android:contentDescription="mota"-->
-<!--            android:layout_alignParentRight="true"-->
-<!--            android:src="@drawable/ic_filter"-->
-<!--            android:layout_below="@+id/id_slide_show"-->
-<!--            android:layout_marginTop="45dp"-->
-<!--            android:rotation="45"-->
-<!--            android:layout_marginRight="15dp"/>-->
-
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/id_tablayout_home"
             android:layout_width="match_parent"
@@ -139,22 +125,10 @@
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/id_viewpager2_home"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:minHeight="300dp"
             android:layout_below="@+id/id_tablayout_home"
             android:layout_marginBottom="24dp"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/gridview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/id_viewpager2_home"
-            android:layout_marginTop="15dp"
-            android:gravity="center"
-            android:verticalSpacing="30dp">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
 
     </RelativeLayout>
 

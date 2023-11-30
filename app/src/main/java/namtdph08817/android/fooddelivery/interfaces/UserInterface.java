@@ -4,6 +4,8 @@ import java.util.List;
 
 import namtdph08817.android.fooddelivery.model.Messages;
 import namtdph08817.android.fooddelivery.model.Users;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -26,8 +28,9 @@ public interface UserInterface {
     @FormUrlEncoded
     @POST("api/users/checklogin")
     Call<Messages> checkLogin(@Field("email") String email, @Field("passwd") String passwd);
-//    @PUT("/binhluan/{id}")
-//    Call<BinhLuanModel> putData(@Path("id") String id,@Body BinhLuanModel data);
-//    @DELETE("/binhluan/{id}")
-//    Call<BinhLuanModel> deleteData(@Path("id") String id);
+    @Multipart
+    @PUT("api/users/{id}")
+    Call<Users> putUser(@Path("id") String id,
+                        @Part MultipartBody.Part avatar,
+                        @Part("user") RequestBody user);
 }

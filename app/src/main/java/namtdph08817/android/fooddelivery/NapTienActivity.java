@@ -79,7 +79,7 @@ public class NapTienActivity extends AppCompatActivity {
                 Log.d("empty","anh");
                 Toast.makeText(this, "Chọn ảnh màn hình giao dịch", Toast.LENGTH_SHORT).show();
             } else {
-                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm dd/MM/yyyy");
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
                 String thoiGian = sdf.format(new Date());
                 File file = new File(imagePath);
                 if (!file.exists()){

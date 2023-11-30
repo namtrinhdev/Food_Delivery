@@ -70,7 +70,7 @@ public class DaHuyMoneyFragment extends Fragment {
         adapter = new QL_Don_Nap_Adapter(getContext(), new ChangeStatusDonNapInterface() {
             @Override
             public void onChange(String id) {
-                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm dd/MM/yyyy");
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
                 String thoiGian = sdf.format(new Date());
                 Call<Messages> callPut = mInterface.putRequestNapTien(id,sessionManager.getVaiTro(),thoiGian);
                 callPut.enqueue(new Callback<Messages>() {
