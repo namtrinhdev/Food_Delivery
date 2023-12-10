@@ -1,8 +1,9 @@
 package namtdph08817.android.fooddelivery.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class NapTien {
+public class NapTien implements Serializable {
     private String _id;
     private Users userModel;
     private int soTienNap;

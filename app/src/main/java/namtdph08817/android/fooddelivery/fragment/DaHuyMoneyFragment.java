@@ -1,5 +1,6 @@
 package namtdph08817.android.fooddelivery.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import namtdph08817.android.fooddelivery.DetailDonNapActivity;
 import namtdph08817.android.fooddelivery.R;
 import namtdph08817.android.fooddelivery.adapter.QL_Don_Nap_Adapter;
 import namtdph08817.android.fooddelivery.classs.RetrofitClientAPI;
@@ -27,6 +29,7 @@ import namtdph08817.android.fooddelivery.interfaces.ChangeStatusDonNapInterface;
 import namtdph08817.android.fooddelivery.interfaces.NapTienInterface;
 import namtdph08817.android.fooddelivery.model.Messages;
 import namtdph08817.android.fooddelivery.model.NapTien;
+import namtdph08817.android.fooddelivery.model.ThanhToan;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -90,6 +93,18 @@ public class DaHuyMoneyFragment extends Fragment {
                         Log.e(TAG, "onFailure: ",t);
                     }
                 });
+            }
+
+            @Override
+            public void openDetail(ThanhToan item) {
+
+            }
+
+            @Override
+            public void openDetailMoney(NapTien item) {
+                Intent i = new Intent(getActivity(), DetailDonNapActivity.class);
+                i.putExtra("naptien",item);
+                startActivity(i);
             }
         });
 

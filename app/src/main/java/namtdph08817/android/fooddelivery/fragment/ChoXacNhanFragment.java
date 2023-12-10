@@ -1,5 +1,6 @@
 package namtdph08817.android.fooddelivery.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import namtdph08817.android.fooddelivery.DetailDonHangActivity;
 import namtdph08817.android.fooddelivery.R;
 import namtdph08817.android.fooddelivery.adapter.Adapter_RecyclerView_QLDH;
 import namtdph08817.android.fooddelivery.classs.RetrofitClientAPI;
@@ -27,6 +29,7 @@ import namtdph08817.android.fooddelivery.classs.SessionManager;
 import namtdph08817.android.fooddelivery.interfaces.ChangeStatusDonNapInterface;
 import namtdph08817.android.fooddelivery.interfaces.ThanhToanAPI_Interface;
 import namtdph08817.android.fooddelivery.model.Messages;
+import namtdph08817.android.fooddelivery.model.NapTien;
 import namtdph08817.android.fooddelivery.model.ThanhToan;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -75,6 +78,18 @@ public class ChoXacNhanFragment extends Fragment {
             @Override
             public void onChange(String id) {
                 updateStatus(id);
+            }
+
+            @Override
+            public void openDetail(ThanhToan item) {
+                Intent i = new Intent(getActivity(), DetailDonHangActivity.class);
+                i.putExtra("donhang", item);
+                startActivity(i);
+            }
+
+            @Override
+            public void openDetailMoney(NapTien item) {
+
             }
         });
 

@@ -78,6 +78,10 @@ public class Adapter_RecyclerView_QLDH extends RecyclerView.Adapter<Adapter_Recy
             mInterface.onChange(model.get_id());
             notifyDataSetChanged();
         });
+
+        holder.itemView.setOnClickListener(view -> {
+            mInterface.openDetail(model);
+        });
     }
 
     @Override

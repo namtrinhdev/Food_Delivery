@@ -1,8 +1,9 @@
 package namtdph08817.android.fooddelivery.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Cart {
+public class Cart implements Serializable {
     private Foods foods;
     private int soLuong;
 

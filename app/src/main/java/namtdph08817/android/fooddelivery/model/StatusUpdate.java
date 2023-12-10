@@ -1,6 +1,8 @@
 package namtdph08817.android.fooddelivery.model;
 
-public class StatusUpdate {
+import java.io.Serializable;
+
+public class StatusUpdate implements Serializable {
     String status,time;
 
     public StatusUpdate() {

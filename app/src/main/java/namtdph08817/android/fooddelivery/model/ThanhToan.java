@@ -1,8 +1,9 @@
 package namtdph08817.android.fooddelivery.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ThanhToan {
+public class ThanhToan implements Serializable {
     private String _id;
     private List<Cart> cart;
     private Users user;

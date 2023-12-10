@@ -1,6 +1,8 @@
 package namtdph08817.android.fooddelivery.model;
 
-public class Users {
+import java.io.Serializable;
+
+public class Users implements Serializable {
     private String _id,fullname,email,sdt,passwd, diaChi;
     private int vaitro;
     private String avatar;
