@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.ThongKeFragment">
+    <TextView
+        android:id="@+id/zz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thống kê"
+        android:textColor="@color/text_normal"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        />
+    <ImageButton
+        android:id="@+id/btnFilter_thongKe"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button_custom_1"
+        android:contentDescription="loc"
+        android:src="@drawable/ic_filter"
+        android:layout_marginTop="65dp"
+        android:layout_marginRight="15dp"
+        android:rotation="45"
+        android:layout_alignParentRight="true"/>
+
+    <TextClock
+        android:id="@+id/textClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:format24Hour="HH:mm:ss"
+        android:format12Hour="hh:mm:ss a"
+        android:layout_centerInParent="true"
+        android:timeZone="GMT+7"
+        />
+
+
+</RelativeLayout>

@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +18,42 @@
         android:theme="@style/Theme.FoodDelivery"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".DetailDonHangActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetailDonNapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".QLFoodTypeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".QLFoodsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InformationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ThanhToanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FoodDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NapTienActivity"
+            android:exported="false" />
+        <activity
+            android:name=".QLDonNapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViMoneyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".QLDH_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".DonHangActivity"
+            android:exported="false" />
         <activity
             android:name=".SearchActivity"
             android:exported="false" />

@@ -5,17 +5,100 @@
     android:id="@+id/id_scrollview_Home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.HomeFragment">
+    tools:context=".fragment.HomeFragment"
+    android:background="@drawable/shape_gradient_bg">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_hi_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="29dp"
+            android:layout_marginBottom="15dp"
+            android:layout_toLeftOf="@+id/cv"
+            android:text="Xin chào, Trịnh Đình Nam"
+            android:textStyle="normal"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/tv_style_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_hi_name"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_toLeftOf="@+id/cv"
+            android:text="Find your\nBest Food here"
+            android:fontFamily="@font/font1_regular"
+            android:textColor="@color/black"
+            android:textSize="40dp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            app:cardBackgroundColor="@color/bg_white"
+            app:cardCornerRadius="45dp"
+            app:cardElevation="7dp"
+            app:cardPreventCornerOverlap="false"
+            android:layout_alignParentRight="true"
+            android:layout_margin="15dp"
+            app:contentPadding="2dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardCornerRadius="45dp">
+
+                <ImageView
+                    android:id="@+id/img_avatar_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_default_user" />
+            </androidx.cardview.widget.CardView>
+
+        </androidx.cardview.widget.CardView>
+        <EditText
+            android:id="@+id/ed_search"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/search_shape"
+            android:hint="Search food..."
+            android:drawableLeft="@drawable/search2"
+            android:paddingStart="15dp"
+            android:drawablePadding="10dp"
+            android:textColorHint="@color/text_1"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:clickable="true"
+            android:fontFamily="@font/font_1"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_below="@+id/tv_style_home"
+            />
+
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/id_slide_show"
             android:layout_width="match_parent"
-            android:paddingStart="80dp"
-            android:paddingEnd="80dp"
-            android:layout_height="140dp"
+            android:layout_height="160dp"
+            android:layout_below="@+id/ed_search"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:layout_marginTop="25dp"
             android:layout_centerHorizontal="true"/>
         <me.relex.circleindicator.CircleIndicator3
             android:id="@+id/id_circleindicator"
@@ -26,69 +109,27 @@
             android:layout_marginTop="5dp"
             app:ci_drawable="@drawable/shape_circle_indicator"/>
 
-        <EditText
-            android:id="@+id/ed_search"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="45dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="25dp"
-            android:background="@drawable/search_shape"
-            android:layout_toLeftOf="@+id/btnFilter"
-            android:hint="Search food.."
-            android:drawableLeft="@drawable/baseline_search_24"
-            android:paddingLeft="15dp"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:clickable="true"
-            android:layout_below="@+id/id_slide_show"
-            />
 
-        <ImageButton
-            android:id="@+id/btnFilter"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/button_custom_1"
-            android:contentDescription="mota"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/ic_filter"
-            android:layout_below="@+id/id_slide_show"
-            android:layout_marginTop="45dp"
-            android:rotation="45"
-            android:layout_marginRight="15dp"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/gridview"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/id_tablayout_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ed_search"
-            android:layout_marginTop="15dp"
-            android:gravity="center"
-            android:verticalSpacing="30dp">
+            android:layout_below="@+id/id_circleindicator"
+            android:background="#20FBE2E2"
+            app:tabMode="scrollable"
+            app:tabInlineLabel="true"
+            app:tabRippleColor="@null"
+            app:tabIndicatorHeight="0dp">
 
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <TextView
-            android:id="@+id/zzzzz"
+        </com.google.android.material.tabs.TabLayout>
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/id_viewpager2_home"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/gridview"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:text="Món mới"
-            android:textColor="@color/text_normal"
-            android:textSize="19sp" />
+            android:layout_height="match_parent"
+            android:minHeight="300dp"
+            android:layout_below="@+id/id_tablayout_home"
+            android:layout_marginBottom="24dp"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/id_recycle_newfood"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/zzzzz" />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/iconapp"
-            android:layout_below="@+id/id_recycle_newfood"/>
     </RelativeLayout>
 
 </androidx.core.widget.NestedScrollView>

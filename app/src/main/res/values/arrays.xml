@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="tab_icon_pairs">
+        <item>@array/tab1_icons</item>
+        <item>@array/tab2_icons</item>
+        <!-- Thêm các item tương ứng với số lượng tab bạn có -->
+    </integer-array>
+    <array name="tab1_icons">
+        <item>@drawable/ic_breakfast0</item>
+        <item>@drawable/ic_breakfast1</item>
+    </array>
+    <array name="tab2_icons">
+        <item>@drawable/lunch0</item>
+        <item>@drawable/lunch1</item>
+    </array>
+    <array name="tab3_icons">
+        <item>@drawable/dinner0</item>
+        <item>@drawable/dinner1</item>
+    </array>
+    <!-- Thêm các mảng tương ứng với số lượng tab bạn có -->
+</resources>

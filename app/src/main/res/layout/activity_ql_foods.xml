@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QLFoodsActivity">
+    <ImageView
+        android:id="@+id/img_backpress_ql_foods"
+        android:layout_width="43dp"
+        android:layout_height="43dp"
+        android:background="@drawable/back_shape"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_backarrow"
+        android:rotation="45"
+        android:padding="10dp"
+        />
+    <TextView
+        android:id="@+id/zz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quản lý món ăn"
+        android:textColor="@color/text_normal"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        />
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_ql_foods"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="16.5dp"
+        android:layout_below="@+id/zz"
+        android:layout_toLeftOf="@+id/btnFilter_ql_foods"
+        android:background="@drawable/search_shape"
+        android:imeOptions="actionSearch"
+        app:iconifiedByDefault="false"
+        app:queryHint="Search food.."
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        tools:ignore="MissingConstraints" />
+    <ImageButton
+        android:id="@+id/btnFilter_ql_foods"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button_custom_1"
+        android:layout_marginTop="16.5dp"
+        android:layout_marginEnd="15dp"
+        android:layout_below="@+id/zz"
+        android:contentDescription="loc"
+        android:src="@drawable/ic_filter"
+        android:layout_alignParentRight="true"
+        android:rotation="45"
+        tools:ignore="HardcodedText" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/id_recycle_ql_foods"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/search_ql_foods"
+        android:padding="15dp"
+        android:paddingVertical="10dp"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/id_floatingbtn_add_ql_foods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:src="@android:drawable/ic_input_add"
+        android:contentDescription="Add food"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="15dp"
+        />
+
+</RelativeLayout>

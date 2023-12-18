@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FoodDetailActivity"
+    android:background="@color/bg_white"
+    >
+    <ImageView
+        android:id="@+id/img_food_detail"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="20dp"/>
+    <ImageView
+        android:id="@+id/img_backpress_food_detail"
+        android:layout_width="43dp"
+        android:layout_height="43dp"
+        android:background="@drawable/back_shape"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/ic_backarrow"
+        android:rotation="45"
+        android:padding="10dp"
+        />
+
+
+    <ImageView
+        android:id="@+id/img_plus_food_detail"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/shape_diamon_red"
+        android:src="@drawable/baseline_add_24"
+        android:layout_toRightOf="@+id/tv_number_food_detail"
+        android:layout_below="@id/img_food_detail"
+        android:rotation="45"
+        android:padding="10dp"
+        />
+    <TextView
+        android:id="@+id/tv_number_food_detail"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_food_detail"
+        android:textAlignment="center"
+        android:text="1"
+        android:textSize="25sp"
+        android:textColor="@color/bg_red"
+        android:layout_centerHorizontal="true"/>
+    <ImageView
+        android:id="@+id/img_remove_food_detail"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/shape_diamon_red"
+        android:src="@drawable/baseline_remove_24"
+        android:layout_below="@id/img_food_detail"
+        android:layout_toLeftOf="@+id/tv_number_food_detail"
+        android:rotation="45"
+        android:padding="10dp"
+        />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_number_food_detail"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="270dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_name_food_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Xôi xéo"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:textSize="27sp" />
+
+            <TextView
+                android:id="@+id/tv_description_food_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textColor="@color/text_1"
+                android:text="Day la 1 dong mo ta ngan ve mon an"
+                android:fontFamily="@font/font1_semibold"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/zzzzzzz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:cardCornerRadius="15dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="7dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="10dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total price"
+                android:textColor="@color/text_normal"
+                android:textSize="12sp"
+                android:layout_centerVertical="true"
+                android:layout_above="@+id/tv_price_food_detail"
+                android:layout_marginLeft="25dp"
+                android:layout_marginBottom="5dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_price_food_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="25dp"
+                android:text="49.000"
+                android:textColor="@color/text_normal"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_addToCart_food_detail"
+                android:layout_width="140dp"
+                android:layout_height="58dp"
+                android:layout_marginRight="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="Add to cart"
+                android:textAllCaps="false"
+                android:background="@drawable/button_custom_1"
+                android:textStyle="normal"/>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
